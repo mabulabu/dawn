@@ -1,0 +1,304 @@
+<div class="main-container">
+
+  <!-- A) PROFI-FARBMISCHSYSTEM BANNER -->
+  <div class="mixing-banner">
+    <div>
+      <div class="banner-badges-row">
+        <span class="tag-orange">{{ section.settings.badge_top }}</span>
+        <span class="tag-dark">{{ section.settings.badge_main }}</span>
+      </div>
+      <ul class="mixing-points">
+        <li>• <strong>Direkte Mitnahme:</strong> Sonderfarben frisch vor Ort gemischt (auch Kleinmengen unter 250 ml).</li>
+        <li>• <strong>Converter-Lackspray (400 ml):</strong> 1 Stk. 25 € | 2 Stk. 45 € | 3 Stk. 60 € | 4 Stk. 75 €</li>
+      </ul>
+    </div>
+    <div class="swatch-fan-box">
+      <div class="swatch-deck">
+        <span style="background-color:#d9232a;"></span>
+        <span style="background-color:#f26522;"></span>
+        <span style="background-color:#eab308;"></span>
+        <span style="background-color:#1b8a44;"></span>
+        <span style="background-color:#0284c7;"></span>
+        <span style="background-color:#1e293b;"></span>
+        <span style="background-color:#94a3b8;"></span>
+      </div>
+      <div style="font-size: 11.5px; font-weight: 800; color: #2b2f36;">
+        Computergesteuerte Farbmischung in 1110 Wien &amp; 2201 Hagenbrunn
+      </div>
+    </div>
+  </div>
+
+  <!-- B) 2-SPALTEN HERO-KACHELN (LACKIER SETS & LACK & ZUBEHÖR) -->
+  <div class="hero-tiles-grid">
+    <!-- Kachel 1: Lackier Sets -->
+    <a href="{{ section.settings.tile1_link | default: '/collections/all' }}" class="feature-tile">
+      <div class="tile-left-col">
+        <div class="overlay-title-card">
+          <h3>LACKIER <span>SETS</span></h3>
+          <p>KLARLACK-SETS &amp; LACKSPRAY-PAKETE</p>
+        </div>
+        <span class="tile-cta-btn">{{ section.settings.tile1_cta }} &rarr;</span>
+      </div>
+      <div class="tile-right-visual">
+        {%- if section.settings.tile1_image != blank -%}
+          <img
+            src="{{ section.settings.tile1_image | image_url: width: 400 }}"
+            alt="Lackier Sets"
+            loading="lazy"
+          >
+        {%- else -%}
+          <svg width="110" height="96" viewBox="0 0 110 96" fill="none">
+            <rect x="16" y="10" width="14" height="7" fill="#f26522" stroke="#16181d" stroke-width="2"/>
+            <path d="M10 18 L56 18 L60 28 L60 84 L6 84 L6 28 Z" fill="#e6e8ec" stroke="#16181d" stroke-width="2"/>
+            <rect x="38" y="23" width="14" height="8" fill="#ffffff" stroke="#16181d" stroke-width="1.5"/>
+            <rect x="12" y="38" width="42" height="26" fill="#ffffff" stroke="#16181d" stroke-width="1.5"/>
+            <rect x="12" y="38" width="42" height="7" fill="#f26522"/>
+            <rect x="77" y="18" width="12" height="7" fill="#555" stroke="#16181d" stroke-width="2"/>
+            <path d="M70 33 C70 25, 96 25, 96 33 Z" fill="#dcdfe4" stroke="#16181d" stroke-width="2"/>
+            <rect x="68" y="33" width="30" height="51" rx="2" fill="#ffffff" stroke="#16181d" stroke-width="2"/>
+            <rect x="69" y="44" width="28" height="20" fill="#16181d"/>
+            <rect x="69" y="44" width="28" height="4" fill="#f26522"/>
+          </svg>
+          <span class="slot-badge">FOTO: LACKIER-SETS</span>
+        {%- endif -%}
+      </div>
+    </a>
+
+    <!-- Kachel 2: Lack & Zubehör -->
+    <a href="{{ section.settings.tile2_link | default: '/collections/all' }}" class="feature-tile">
+      <div class="tile-left-col">
+        <div class="overlay-title-card">
+          <h3>LACK &amp; <span>ZUBEHÖR</span></h3>
+          <p>SPACHTEL, FÜLLER, SCHLEIF- &amp; POLIERMITTEL</p>
+        </div>
+        <span class="tile-cta-btn">{{ section.settings.tile2_cta }} &rarr;</span>
+      </div>
+      <div class="tile-right-visual">
+        {%- if section.settings.tile2_image != blank -%}
+          <img
+            src="{{ section.settings.tile2_image | image_url: width: 400 }}"
+            alt="Lack und Zubehör"
+            loading="lazy"
+          >
+        {%- else -%}
+          <svg width="110" height="96" viewBox="0 0 110 96" fill="none">
+            <circle cx="76" cy="56" r="26" fill="#dcdfe4" stroke="#16181d" stroke-width="2"/>
+            <circle cx="76" cy="56" r="8" fill="#ffffff" stroke="#16181d" stroke-width="2"/>
+            <circle cx="76" cy="39" r="2.5" fill="#16181d"/>
+            <circle cx="76" cy="73" r="2.5" fill="#16181d"/>
+            <circle cx="59" cy="56" r="2.5" fill="#16181d"/>
+            <circle cx="93" cy="56" r="2.5" fill="#16181d"/>
+            <ellipse cx="36" cy="24" rx="24" ry="6" fill="#e6e8ec" stroke="#16181d" stroke-width="2"/>
+            <path d="M12 24 L12 76 C12 81, 60 81, 60 76 L60 24" fill="#ffffff" stroke="#16181d" stroke-width="2"/>
+            <rect x="13" y="38" width="46" height="24" fill="#16181d"/>
+            <line x1="18" y1="47" x2="54" y2="47" stroke="#f26522" stroke-width="3.5"/>
+          </svg>
+          <span class="slot-badge">FOTO: ZUBEHÖR</span>
+        {%- endif -%}
+      </div>
+    </a>
+  </div>
+
+  <!-- C) SORTIMENT & FACHBEREICHE -->
+  <h2 class="section-heading">SORTIMENT &amp; FACHBEREICHE</h2>
+  <div class="category-cards-4">
+    <a href="/products/lackspray-400ml" class="cat-box">
+      <div class="cat-box-visual">
+        <svg width="56" height="72" viewBox="0 0 64 84" fill="none">
+          <rect x="25" y="4" width="14" height="8" fill="#555" stroke="#16181d" stroke-width="2"/>
+          <path d="M18 22 C18 14, 46 14, 46 22 Z" fill="#dcdfe4" stroke="#16181d" stroke-width="2"/>
+          <rect x="16" y="22" width="32" height="56" rx="2" fill="#ffffff" stroke="#16181d" stroke-width="2"/>
+          <rect x="17" y="34" width="30" height="24" fill="#14171a"/>
+          <line x1="22" y1="66" x2="42" y2="66" stroke="#888" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="cat-box-title">400ml Lackspray nach Code</div>
+      <span class="cat-box-link">Sortiment öffnen &rarr;</span>
+    </a>
+
+    <a href="/collections/all" class="cat-box">
+      <div class="cat-box-visual">
+        <svg width="60" height="72" viewBox="0 0 72 84" fill="none">
+          <rect x="18" y="6" width="14" height="7" fill="#f26522" stroke="#16181d" stroke-width="2"/>
+          <path d="M14 14 L58 14 L62 24 L62 76 L10 76 L10 24 Z" fill="#e6e8ec" stroke="#16181d" stroke-width="2"/>
+          <rect x="42" y="18" width="12" height="8" fill="#ffffff" stroke="#16181d" stroke-width="1.5"/>
+          <rect x="15" y="34" width="42" height="24" fill="#ffffff" stroke="#16181d" stroke-width="1.5"/>
+          <rect x="15" y="34" width="42" height="6" fill="#f26522"/>
+        </svg>
+      </div>
+      <div class="cat-box-title">Klarlack &amp; Härter</div>
+      <span class="cat-box-link">Sortiment öffnen &rarr;</span>
+    </a>
+
+    <a href="/collections/all" class="cat-box">
+      <div class="cat-box-visual">
+        <svg width="56" height="72" viewBox="0 0 68 84" fill="none">
+          <ellipse cx="34" cy="18" rx="22" ry="6" fill="#dcdfe4" stroke="#16181d" stroke-width="2"/>
+          <path d="M12 18 L12 68 C12 72, 56 72, 56 68 L56 18" fill="#ffffff" stroke="#16181d" stroke-width="2"/>
+          <rect x="13" y="32" width="42" height="22" fill="#16181d"/>
+          <line x1="18" y1="40" x2="50" y2="40" stroke="#f26522" stroke-width="3"/>
+        </svg>
+      </div>
+      <div class="cat-box-title">Füller &amp; Spachtel</div>
+      <span class="cat-box-link">Sortiment öffnen &rarr;</span>
+    </a>
+
+    <a href="/collections/all" class="cat-box">
+      <div class="cat-box-visual">
+        <svg width="60" height="72" viewBox="0 0 72 84" fill="none">
+          <circle cx="36" cy="44" r="26" fill="#e6e8ec" stroke="#16181d" stroke-width="2"/>
+          <circle cx="36" cy="44" r="9" fill="#ffffff" stroke="#16181d" stroke-width="2"/>
+          <circle cx="36" cy="25" r="2.5" fill="#16181d"/>
+          <circle cx="36" cy="63" r="2.5" fill="#16181d"/>
+          <circle cx="17" cy="44" r="2.5" fill="#16181d"/>
+          <circle cx="55" cy="44" r="2.5" fill="#16181d"/>
+        </svg>
+      </div>
+      <div class="cat-box-title">Schleifmittel &amp; Spritzpistolen</div>
+      <span class="cat-box-link">Sortiment öffnen &rarr;</span>
+    </a>
+  </div>
+
+  <!-- D) LIVE-PRODUKTE: AKTIONEN & NEUES (WERKSTATT-ANGEBOTE) -->
+  <h2 class="section-heading">{{ section.settings.deals_heading }}</h2>
+  {%- assign deals_collection = section.settings.deals_collection | default: collections.all -%}
+
+  {%- if deals_collection != blank and deals_collection.products_count > 0 -%}
+    <div class="product-cards-grid">
+      {%- for product in deals_collection.products limit: section.settings.products_to_show -%}
+        {% render 'dy-card-product', card_product: product %}
+      {%- endfor -%}
+    </div>
+  {%- else -%}
+    <div style="background:var(--bg-grey); border:1px dashed var(--border-color); padding:24px; text-align:center; margin-bottom:28px; font-size:13.5px; color:var(--text-muted);">
+      <strong>Noch keine Produkte im Store angelegt.</strong><br>
+      Sobald du im Shopify-Admin unter <em>Products</em> deine ersten Artikel (z.B. EUROLUX Klarlack, Füller, 400ml Lackspray) anlegst, erscheinen sie hier automatisch im Autodoc-Kartenstil.
+    </div>
+  {%- endif -%}
+
+  <!-- E) SHOP-VORSTELLUNG & BEIDE STANDORTE -->
+  <div class="locations-section">
+    <div class="locations-intro">
+      <h3>DY Autocolor GmbH – Seit über 20 Jahren Ihr Spezialist für Farben und Lacke</h3>
+      <p style="font-size: 13.5px; color: #2b2f36;">
+        In unseren Filialen in <strong>1110 Wien (Simmering)</strong> und <strong>2201 Hagenbrunn</strong> erhalten Sie Autolacke von <strong>Standox</strong> und <strong>Nexa Autocolor®</strong>, Füller, Spachtel, Schleif- und Poliermittel sowie Spritzpistolen. Parkmöglichkeiten befinden sich direkt vor dem Haus (Barzahlung, VISA, Maestro). Versand innerhalb Österreichs ab 100 € kostenlos.
+      </p>
+    </div>
+
+    <div class="locations-grid">
+      <div class="branch-card">
+        <h4>📍 Filiale 1110 Wien (Simmering)</h4>
+        <table class="branch-table">
+          <tr><td>Adresse</td><td>Simmeringer Hauptstraße 107, 1110 Wien</td></tr>
+          <tr><td>Telefon</td><td>01 / 966 32 85 &nbsp;|&nbsp; +43 664 445 63 59</td></tr>
+          <tr><td>E-Mail</td><td>office@autolack-farbe.at</td></tr>
+          <tr><td>Mo – Do</td><td>08:00 – 18:00 Uhr</td></tr>
+          <tr><td>Freitag</td><td>08:00 – 13:00 &amp; 14:00 – 18:00 Uhr</td></tr>
+          <tr><td>Samstag</td><td>09:00 – 14:00 Uhr</td></tr>
+        </table>
+      </div>
+
+      <div class="branch-card">
+        <h4>📍 Filiale 2201 Hagenbrunn</h4>
+        <table class="branch-table">
+          <tr><td>Adresse</td><td>Hubertusgasse Nr. 7, 2201 Hagenbrunn</td></tr>
+          <tr><td>Telefon</td><td>+43 2246 50203</td></tr>
+          <tr><td>E-Mail</td><td>office@autolack-farbe.at</td></tr>
+          <tr><td>Mo – Do</td><td>09:30 – 12:30 &amp; 13:00 – 16:30 Uhr</td></tr>
+          <tr><td>Freitag</td><td>09:30 – 12:45 &amp; 13:45 – 18:00 Uhr</td></tr>
+          <tr><td>Samstag</td><td>09:30 – 13:00 Uhr</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "DY Startseite komplett",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_top",
+      "label": "Banner Marken-Badge (Orange)",
+      "default": "STANDOX & NEXA AUTOCOLOR®"
+    },
+    {
+      "type": "text",
+      "id": "badge_main",
+      "label": "Banner Haupttitel (Dunkel)",
+      "default": "PROFI FARBMISCHSYSTEM"
+    },
+    {
+      "type": "header",
+      "content": "Hero-Kachel 1 (Lackier Sets)"
+    },
+    {
+      "type": "text",
+      "id": "tile1_cta",
+      "label": "Button-Text Kachel 1",
+      "default": "Sets ab 45,00 €"
+    },
+    {
+      "type": "url",
+      "id": "tile1_link",
+      "label": "Link Kachel 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "tile1_image",
+      "label": "Foto Kachel 1 (optional – ersetzt Platzhalter)"
+    },
+    {
+      "type": "header",
+      "content": "Hero-Kachel 2 (Lack & Zubehör)"
+    },
+    {
+      "type": "text",
+      "id": "tile2_cta",
+      "label": "Button-Text Kachel 2",
+      "default": "Zum Sortiment"
+    },
+    {
+      "type": "url",
+      "id": "tile2_link",
+      "label": "Link Kachel 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "tile2_image",
+      "label": "Foto Kachel 2 (optional – ersetzt Platzhalter)"
+    },
+    {
+      "type": "header",
+      "content": "Aktionen & Neues (Produkt-Grid)"
+    },
+    {
+      "type": "text",
+      "id": "deals_heading",
+      "label": "Überschrift Produkt-Grid",
+      "default": "AKTIONEN & NEUES (WERKSTATT-ANGEBOTE)"
+    },
+    {
+      "type": "collection",
+      "id": "deals_collection",
+      "label": "Kategorie für Aktionen (leer = Alle Produkte)"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 8,
+      "step": 2,
+      "default": 4,
+      "label": "Anzahl angezeigter Produkte"
+    }
+  ],
+  "presets": [
+    {
+      "name": "DY Startseite komplett"
+    }
+  ]
+}
+{% endschema %}
