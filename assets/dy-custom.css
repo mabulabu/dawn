@@ -1,6 +1,6 @@
 /* ==========================================================================
-   DY AUTOCOLOR – Custom Stylesheet für Shopify Dawn (Online Store 2.0)
-   Datei: assets/dy-custom.css
+   DY AUTOCOLOR — DAWN-SAFE CUSTOM STYLESHEET (assets/dy-custom.css)
+   Scoped to avoid conflicts with Shopify Dawn's native base.css & cart pages
    ========================================================================== */
 
 :root {
@@ -19,19 +19,19 @@
   --dy-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* Scoped Base-Reset nur für DY-Container (schützt Dawn Cart & Account) */
+/* Scoped reset so Dawn's letter-spacing & margins don't bleed into our blocks */
 .top-bar,
 .dy-header,
 .nav-bar-wrap,
 .search-band,
 .main-container,
-.dy-footer {
+.prod-card {
   font-family: var(--dy-font-sans);
   color: var(--text-main);
-  font-size: 15px;
+  letter-spacing: normal;
   line-height: 1.45;
-  -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
 }
 
 .top-bar *,
@@ -39,19 +39,32 @@
 .nav-bar-wrap *,
 .search-band *,
 .main-container *,
-.dy-footer * {
+.prod-card * {
   box-sizing: border-box;
+  letter-spacing: normal;
 }
 
-/* 1. TOP BAR */
+.dy-header h1,
+.main-container h1,
+.main-container h2,
+.main-container h3,
+.main-container h4,
+.main-container p,
+.main-container ul,
+.main-container li {
+  margin: 0;
+  padding: 0;
+  font-family: var(--dy-font-sans);
+}
+
+/* 1. TOP INFO BAR */
 .top-bar {
   background: var(--bg-grey-dark);
   border-bottom: 1px solid var(--border-color);
   font-size: 12px;
   color: #2b2f36;
-  padding: 5px 16px;
+  padding: 6px 16px;
 }
-
 .top-bar-inner {
   max-width: 1160px;
   margin: 0 auto;
@@ -61,16 +74,741 @@
   flex-wrap: wrap;
   gap: 8px;
 }
-
 .top-bar-right {
   display: flex;
   gap: 14px;
   font-weight: 600;
 }
-
 @media (max-width: 720px) {
-  .top-bar-inner {
-    justify-content: center;
-    text-align: center;
-  }
+  .top-bar-inner { justify-content: center; text-align: center; }
+  .top-bar-right { display: none; }
+}
 
+/* 2. LOGO HEADER (.dy-header instead of bare header) */
+.dy-header {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  background: var(--bg-white);
+}
+.brand-identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+.dy-oval-logo {
+  width: 108px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--logo-oval);
+  border: 2px solid #16181d;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 8px;
+  flex-shrink: 0;
+}
+.dy-oval-logo .dy-script {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 26px;
+  color: #ff8585;
+  text-shadow: -1.5px -1.5px 0 #16181d, 1.5px -1.5px 0 #16181d, -1.5px 1.5px 0 #16181d, 1.5px 1.5px 0 #16181d;
+  line-height: 1;
+}
+.dy-oval-logo .dy-label {
+  font-size: 9px;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 1px 1px 2px #000, -1px -1px 2px #000;
+  line-height: 1.05;
+}
+.brand-copy h1 {
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: -0.4px;
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: var(--text-main);
+}
+.brand-copy h1 span { color: var(--brand-orange); }
+.brand-copy p {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+.header-meta {
+  text-align: right;
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+.header-meta strong { color: var(--text-main); }
+@media (max-width: 680px) {
+  .header-meta { display: none; }
+}
+
+/* 3. STICKY NAVIGATION BAR + 4PX SPECTRUM DIVIDER */
+.nav-bar-wrap {
+  background: var(--text-main);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 900;
+}
+.nav-bar-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 7px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.nav-icons-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.icon-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px;
+  font-size: 13px;
+  font-weight: 700;
+}
+.icon-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: #ffffff;
+}
+.cart-pill {
+  background: var(--brand-orange);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 900;
+  padding: 1px 6px;
+  border-radius: 2px;
+  line-height: 1.3;
+}
+.nav-links-right {
+  display: flex;
+  gap: 6px;
+}
+.nav-tab {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 2px;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  display: inline-block;
+}
+.nav-tab.active,
+.nav-tab:hover {
+  background: var(--brand-orange);
+  color: #fff;
+}
+.spectrum-divider {
+  height: 4px;
+  background: var(--spectrum-bar);
+  width: 100%;
+  display: block;
+}
+
+/* 4. PERMANENT FIN & PAINT-CODE SEARCH BAR + SINGLE-ROW CHIPS */
+.search-band {
+  background: var(--bg-grey);
+  border-bottom: 1px solid var(--border-color);
+  padding: 8px 16px;
+}
+.search-band-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+.search-input-group {
+  display: flex;
+  width: 100%;
+}
+.search-input-group input {
+  flex: 1;
+  height: 40px;
+  border: 1px solid #b6bcc6;
+  border-right: none;
+  padding: 0 12px;
+  font-size: 14px;
+  background: #fff;
+  color: var(--text-main);
+  border-radius: 2px 0 0 2px;
+  outline: none;
+  box-shadow: none;
+  font-family: var(--dy-font-sans);
+}
+.search-input-group input:focus {
+  border-color: var(--text-main);
+  box-shadow: none;
+}
+.search-btn {
+  width: 46px;
+  height: 40px;
+  background: #2b2f36;
+  border: 1px solid #2b2f36;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 0 2px 2px 0;
+  padding: 0;
+}
+.search-btn:hover {
+  background: var(--brand-orange);
+  border-color: var(--brand-orange);
+}
+.search-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: #ffffff;
+  stroke-width: 2.4;
+  fill: none;
+}
+.search-suggestions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  margin-top: 7px;
+  padding-bottom: 2px;
+  font-size: 11.5px;
+}
+.search-suggestions::-webkit-scrollbar { display: none; }
+.chip-btn {
+  background: #fff;
+  border: 1px solid #c5cad3;
+  padding: 4px 9px;
+  border-radius: 2px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 11.5px;
+  color: #2b2f36;
+  flex-shrink: 0;
+  font-family: var(--dy-font-sans);
+  line-height: 1.3;
+}
+.chip-btn:hover {
+  border-color: var(--brand-orange);
+  color: var(--brand-orange);
+}
+
+/* MAIN CONTAINER */
+.main-container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 16px 16px 48px;
+  font-size: 15px;
+}
+
+/* 5. PROFI-FARBMISCHSYSTEM BANNER */
+.mixing-banner {
+  background: var(--bg-grey);
+  border: 1px solid var(--border-color);
+  padding: 16px 20px;
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.banner-badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.tag-orange {
+  background: var(--brand-orange);
+  color: #fff;
+  font-weight: 800;
+  font-size: 11.5px;
+  padding: 3px 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.tag-dark {
+  background: var(--text-main);
+  color: #fff;
+  font-weight: 900;
+  font-size: 16px;
+  padding: 3px 10px;
+  text-transform: uppercase;
+}
+.mixing-points {
+  list-style: none;
+  font-size: 13px;
+  color: #2b2f36;
+  line-height: 1.45;
+}
+.mixing-points li { margin-bottom: 4px; }
+.mixing-points li strong { color: var(--text-main); }
+
+.swatch-fan-box {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  padding: 10px 14px;
+  text-align: center;
+}
+.swatch-deck {
+  display: flex;
+  height: 34px;
+  gap: 4px;
+  padding: 0 6px;
+  margin-bottom: 6px;
+  overflow: hidden;
+}
+.swatch-deck span {
+  flex: 1;
+  transform: skewX(-16deg);
+  border-radius: 1px;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.18) 100%);
+}
+@media (max-width: 760px) {
+  .mixing-banner { grid-template-columns: 1fr; padding: 12px 14px; gap: 10px; }
+  .swatch-deck { height: 24px; }
+}
+
+/* 6. TWO-COLUMN HERO TILES (LACKIER SETS & LACK & ZUBEHÖR) */
+.hero-tiles-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+@media (max-width: 760px) {
+  .hero-tiles-grid { grid-template-columns: 1fr; gap: 12px; }
+}
+.feature-tile {
+  background: linear-gradient(135deg, #f4f5f7 0%, #e9ecf0 100%);
+  border: 1px solid var(--border-color);
+  padding: 18px 20px;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 16px;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.feature-tile:hover {
+  border-color: var(--brand-orange);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.tile-left-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+.overlay-title-card {
+  background: #ffffff;
+  padding: 12px 15px;
+  border-left: 4px solid var(--brand-orange);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  width: 100%;
+}
+.overlay-title-card h3 {
+  font-size: 19px;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: var(--text-main);
+}
+.overlay-title-card h3 span { color: var(--brand-orange); }
+.overlay-title-card p {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 3px;
+}
+.tile-cta-btn {
+  background: var(--brand-orange);
+  color: #fff;
+  font-weight: 800;
+  font-size: 13.5px;
+  padding: 8px 14px;
+  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.feature-tile:hover .tile-cta-btn { background: var(--brand-orange-hover); }
+.tile-right-visual {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  height: 148px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  overflow: hidden;
+}
+.tile-right-visual img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+@media (max-width: 480px) {
+  .feature-tile { grid-template-columns: 1.15fr 0.85fr; padding: 14px; gap: 10px; }
+  .tile-right-visual { height: 124px; }
+  .overlay-title-card h3 { font-size: 17px; }
+}
+
+/* 7. CATEGORY CARDS (SORTIMENT & FACHBEREICHE) */
+.section-heading {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin: 26px 0 14px;
+  color: var(--text-main);
+}
+.category-cards-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 28px;
+}
+@media (max-width: 860px) {
+  .category-cards-4 { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+}
+.cat-box {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  padding: 16px 12px 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.cat-box:hover {
+  border-color: var(--brand-orange);
+  transform: translateY(-2px);
+}
+.cat-box-visual {
+  height: 92px;
+  border-bottom: 1px solid #eceef2;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cat-box-title {
+  font-size: 14px;
+  font-weight: 800;
+  margin-bottom: 6px;
+  color: var(--text-main);
+}
+.cat-box-link {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--brand-orange);
+  display: inline-block;
+}
+.cat-box:hover .cat-box-link { text-decoration: underline; }
+
+/* 8. AUTODOC-STYLE PRODUCT CARDS (HOME & DAWN COLLECTION GRID) */
+.product-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 32px;
+}
+@media (max-width: 920px) {
+  .product-cards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 440px) {
+  .product-cards-grid { gap: 10px; }
+}
+/* Ensures equal heights when dy-card-product is rendered inside Dawn's native collection grid */
+.grid__item .prod-card {
+  height: 100%;
+}
+.prod-card {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color 0.15s;
+  text-align: left;
+}
+.prod-card:hover { border-color: #9ea6b2; }
+.prod-card-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.prod-brand-tag {
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #2b2f36;
+  background: var(--bg-grey);
+  padding: 2px 6px;
+  border: 1px solid var(--border-color);
+}
+.prod-stock-dot {
+  color: var(--status-green);
+  font-weight: 700;
+}
+.prod-visual-box {
+  height: 126px;
+  margin-bottom: 10px;
+  background: #f9fafb;
+  border: 1px solid #eef0f3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+.prod-title {
+  font-size: 14.5px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 5px;
+  line-height: 1.25;
+}
+.prod-title:hover { color: var(--brand-orange); }
+.prod-specs {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+.prod-sku {
+  font-size: 11px;
+  color: #7a828e;
+  margin-bottom: 10px;
+}
+.prod-bottom {
+  border-top: 1px solid #eceef2;
+  padding-top: 10px;
+}
+.prod-price {
+  font-size: 19px;
+  font-weight: 900;
+  color: var(--text-main);
+  line-height: 1.1;
+}
+.prod-net-unit {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+  margin-bottom: 12px;
+}
+.btn-dark-card {
+  width: 100%;
+  background: var(--text-main);
+  color: #fff;
+  border: none;
+  padding: 9px 12px;
+  font-size: 12.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: var(--dy-font-sans);
+  transition: background 0.15s;
+}
+.btn-dark-card:hover { background: var(--brand-orange); color: #fff; }
+.btn-dark-card:disabled { opacity: 0.55; cursor: not-allowed; }
+
+.btn-orange-full {
+  width: 100%;
+  background: var(--brand-orange);
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  font-size: 13.5px;
+  font-weight: 800;
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: var(--dy-font-sans);
+}
+.btn-orange-full:hover { background: var(--brand-orange-hover); }
+
+.slot-badge {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #6c737f;
+  margin-top: 5px;
+}
+
+/* 9. BRANCH LOCATIONS (SIMMERING & HAGENBRUNN) */
+.locations-section {
+  background: var(--bg-grey);
+  border: 1px solid var(--border-color);
+  padding: 22px;
+  margin-top: 16px;
+}
+.locations-intro {
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-color);
+}
+.locations-intro h3 {
+  font-size: 17px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  color: var(--text-main);
+}
+.locations-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+@media (max-width: 760px) {
+  .locations-grid { grid-template-columns: 1fr; }
+}
+.branch-card {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  padding: 14px 16px;
+}
+.branch-card h4 {
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  color: var(--text-main);
+  border-bottom: 2px solid var(--brand-orange);
+  padding-bottom: 4px;
+  display: inline-block;
+}
+.branch-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+  box-shadow: none;
+}
+.branch-table td {
+  padding: 6px 0;
+  border: none;
+  border-bottom: 1px solid #f0f2f5;
+  vertical-align: top;
+}
+.branch-table td:first-child {
+  font-weight: 700;
+  width: 38%;
+  color: #2b2f36;
+}
+
+/* 10. PROBLEM-FIRST ZEBRA TABLE & PRODUCT DETAIL PAGE */
+.zebra-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--border-color);
+  font-size: 13.5px;
+  margin-bottom: 20px;
+  background: #fff;
+  box-shadow: none;
+}
+.zebra-table th {
+  background: var(--bg-grey);
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 800;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-main);
+}
+.zebra-table td {
+  padding: 10px 14px;
+  border: none;
+  border-bottom: 1px solid #e5e7eb;
+  vertical-align: top;
+}
+.zebra-table tr:nth-child(even) td { background: var(--bg-grey); }
+.zebra-table td:first-child { font-weight: 700; width: 36%; }
+
+.detail-layout {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+@media (max-width: 820px) {
+  .detail-layout { grid-template-columns: 1fr; }
+}
+.panel-box {
+  background: var(--bg-grey);
+  border: 1px solid var(--border-color);
+  padding: 18px;
+  margin-bottom: 14px;
+}
+.panel-label {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  letter-spacing: 0.3px;
+}
+.tier-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+.tier-btn {
+  background: #fff;
+  border: 1px solid #b6bcc6;
+  padding: 9px 10px;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 2px;
+  font-size: 13px;
+  font-family: var(--dy-font-sans);
+  color: var(--text-main);
+}
+.tier-btn.active {
+  border: 2px solid var(--brand-orange);
+  background: #fff9f5;
+}
