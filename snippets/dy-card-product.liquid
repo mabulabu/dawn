@@ -1,0 +1,85 @@
+{% comment %}
+  DY Autocolor - Autodoc-Style Product Card
+  Usage: {% render 'dy-card-product', card_product: product %}
+  Metafield used: card_product.metafields.custom.specs
+  Tag used: 'mischlack' (routes to detail page instead of 1-click add-to-cart)
+{% endcomment %}
+
+{%- assign variant = card_product.selected_or_first_available_variant -%}
+{%- assign net_price = variant.price | divided_by: 1.2 | round -%}
+{%- assign is_custom_paint = false -%}
+{%- if card_product.tags contains 'mischlack' or card_product.variants.size > 1 -%}
+  {%- assign is_custom_paint = true -%}
+{%- endif -%}
+
+<div class="prod-card">
+  <div>
+    <div class="prod-card-top-row">
+      <span class="prod-brand-tag">{{ card_product.vendor | default: 'DY AUTOCOLOR' }}</span>
+      {%- if variant.available -%}
+        <span class="prod-stock-dot">● Auf Lager</span>
+      {%- else -%}
+        <span style="color:#d9232a; font-weight:700;">Ausverkauft</span>
+      {%- endif -%}
+    </div>
+
+    <a href="{{ card_product.url }}" class="prod-visual-box" style="text-decoration:none;">
+      {%- if card_product.featured_media -%}
+        <img
+          src="{{ card_product.featured_media | image_url: width: 360 }}"
+          alt="{{ card_product.title | escape }}"
+          loading="lazy"
+          width="180"
+          height="120"
+          style="max-height:110px; width:auto; object-fit:contain;"
+        >
+      {%- else -%}
+        <svg width="58" height="68" viewBox="0 0 72 84" fill="none">
+          <rect x="18" y="6" width="14" height="7" fill="#f26522" stroke="#16181d" stroke-width="2"/>
+          <path d="M14 14 L58 14 L62 24 L62 76 L10 76 L10 24 Z" fill="#e6e8ec" stroke="#16181d" stroke-width="2"/>
+          <rect x="42" y="18" width="12" height="8" fill="#ffffff" stroke="#16181d" stroke-width="1.5"/>
+          <rect x="15" y="34" width="42" height="24" fill="#ffffff" stroke="#16181d" stroke-width="1.5"/>
+          <rect x="15" y="34" width="42" height="6" fill="#f26522"/>
+        </svg>
+        <span class="slot-badge">FOTO FOLGT</span>
+      {%- endif -%}
+    </a>
+
+    <a href="{{ card_product.url }}" class="prod-title" style="display:block; text-decoration:none;">
+      {{ card_product.title }}
+    </a>
+
+    <div class="prod-specs">
+      {{ card_product.metafields.custom.specs | default: card_product.description | strip_html | truncate: 75 }}
+    </div>
+
+    {%- if variant.sku != blank -%}
+      <div class="prod-sku">Art.-Nr.: {{ variant.sku }}</div>
+    {%- endif -%}
+  </div>
+
+  <div class="prod-bottom">
+    <div class="prod-price">{{ variant.price | money }}</div>
+    <div class="prod-net-unit">
+      Netto: {{ net_price | money }}
+      {%- if variant.unit_price_measurement -%}
+        &nbsp;| [{{ variant.unit_price | money }} / {% if variant.unit_price_measurement.reference_value != 1 %}{{ variant.unit_price_measurement.reference_value }}{% endif %}{{ variant.unit_price_measurement.reference_unit }}]
+      {%- endif -%}
+    </div>
+
+    {%- if is_custom_paint -%}
+      <a href="{{ card_product.url }}" class="btn-dark-card" style="display:block; text-align:center; text-decoration:none;">
+        Farbcode / Staffel wählen &rarr;
+      </a>
+    {%- else -%}
+      <button
+        type="button"
+        class="btn-dark-card"
+        onclick="dyAddToCartAjax('{{ variant.id }}', 1, {}, this)"
+        {% unless variant.available %}disabled{% endunless %}
+      >
+        + In den Warenkorb
+      </button>
+    {%- endif -%}
+  </div>
+</div>
