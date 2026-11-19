@@ -1,0 +1,44 @@
+<div class="main-container" style="padding-bottom: 12px;">
+  <div style="display:flex; justify-content:space-between; align-items:center; background:var(--bg-grey); border:1px solid var(--border-color); padding:10px 14px; margin-bottom:14px;">
+    <strong style="text-transform:uppercase; font-size:14px;">{{ collection.title | default: 'SORTIMENT: LACKE, SETS & ZUBEHÖR' }}</strong>
+    <a href="/collections/all" style="font-size:12px; padding:4px 10px; border:1px solid #b6bcc6; background:#fff; color:#16181d; text-decoration:none; font-weight:600;">Alle Artikel zeigen</a>
+  </div>
+
+  <table class="zebra-table">
+    <thead>
+      <tr>
+        <th>Ihr Vorhaben am Fahrzeug / Gebinde</th>
+        <th>Welches Produkt Sie brauchen &amp; Warum (Kurzinfo)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Steinschlag &amp; kleine Kratzer<br><span style="font-weight:400; color:var(--text-muted);">Lackstift / Kleinmenge — bis 250ml</span></td>
+        <td>• <strong>Lösung:</strong> Direkt mit Pinsel oder Tupfer ohne Abkleben auftragen.<br>• <strong>Vorteil:</strong> Wir füllen in Wien &amp; Hagenbrunn auch Kleinmengen unter 250 ml exakt nach Ihrem Farbcode ab.</td>
+      </tr>
+      <tr>
+        <td>Kotflügel, Stoßstange oder Tür lackieren<br><span style="font-weight:400; color:var(--text-muted);">Converter Lackspray — 400ml</span></td>
+        <td>• <strong>Lösung:</strong> Gleichmäßiger Sprühauftrag aus der Profi-Dose (1 Stk. 25 € | 2 Stk. 45 € | 3 Stk. 60 € | 4 Stk. 75 €).<br>• <strong>Wichtig:</strong> Basislack trocknet matt – danach zwingend mit <strong>2K-Klarlack</strong> versiegeln.</td>
+      </tr>
+      <tr>
+        <td>Glanz, Benzin- &amp; Rostschutz versiegeln<br><span style="font-weight:400; color:var(--text-muted);">EUROLUX 2K Klarlack + Härter — 400ml / 5L</span></td>
+        <td>• <strong>Lösung:</strong> Durch den 2K-Härter härtet der Lack chemisch wie ab Werk aus.<br>• <strong>Wichtig:</strong> Ohne 2K-Härter löst sich der Lack an der Tankstelle oder in der Waschanlage wieder ab.</td>
+      </tr>
+      <tr>
+        <td>Tiefere Dellen &amp; Schleifriefen ausgleichen<br><span style="font-weight:400; color:var(--text-muted);">EUROLUX 2K Füller 4:1 — 1L / 3,5L</span></td>
+        <td>• <strong>Lösung:</strong> Haftgrundierung nach dem Spachteln vor dem Decklack.<br>• <strong>Mischverhältnis:</strong> 4 Teile Füller zu 1 Teil Härter (inklusive).</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+{% schema %}
+{
+  "name": "DY Problem-First Tabelle",
+  "presets": [
+    {
+      "name": "DY Problem-First Tabelle"
+    }
+  ]
+}
+{% endschema %}
