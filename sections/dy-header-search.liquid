@@ -1,0 +1,104 @@
+{{ 'dy-custom.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'dy-fin-finder.js' | asset_url }}" defer="defer"></script>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div>📞 Beratung Wien: <strong>01 / 966 32 85</strong> | Mobil: <strong>+43 664 445 63 59</strong></div>
+    <div class="top-bar-right">
+      <span>✓ Versand in AT ab 100 € kostenlos</span>
+      <span>✓ Standorte: 1110 Wien &amp; 2201 Hagenbrunn</span>
+    </div>
+  </div>
+</div>
+
+<header class="dy-header">
+  <a href="{{ routes.root_url }}" class="brand-identity" style="text-decoration:none; color:inherit;">
+    <div class="dy-oval-logo">
+      <span class="dy-script">dy</span>
+      <span class="dy-label">Autolack<br>&amp; Farbe</span>
+    </div>
+    <div class="brand-copy">
+      <h1>{{ section.settings.shop_title_main }}<span>{{ section.settings.shop_title_accent }}</span></h1>
+      <p>{{ section.settings.shop_subtitle }}</p>
+    </div>
+  </a>
+  <div class="header-meta">
+    <div><strong>Standox &amp; Nexa Autocolor®</strong> Fachbetrieb</div>
+    <div>Direkte Mitnahme &amp; Farbmischung vor Ort</div>
+  </div>
+</header>
+
+<div class="nav-bar-wrap">
+  <div class="nav-bar-inner">
+    <div class="nav-icons-left">
+      <a href="{{ routes.account_url }}" class="icon-btn" title="Kundenkonto / Werkstatt-Login">
+        <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/></svg>
+      </a>
+      <a href="{{ routes.cart_url }}" class="icon-btn" title="Warenkorb" style="text-decoration:none;">
+        <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+        <span class="cart-pill" id="dy-cart-count">{{ cart.item_count }}</span>
+      </a>
+    </div>
+
+    <div class="nav-links-right">
+      <a href="{{ routes.root_url }}" class="nav-tab {% if request.page_type == 'index' %}active{% endif %}" style="text-decoration:none;">Startseite</a>
+      <a href="/collections/all" class="nav-tab {% if request.page_type == 'collection' %}active{% endif %}" style="text-decoration:none;">Lacke &amp; Zubehör</a>
+    </div>
+  </div>
+  <div class="spectrum-divider"></div>
+</div>
+
+<!-- PERMANENT FIN & PAINT-CODE SEARCH BAR + WHATSAPP PHOTO HELP -->
+<div class="search-band">
+  <div class="search-band-inner">
+    <form onsubmit="handleDySmartSearch(event)" class="search-input-group">
+      <input
+        type="search"
+        id="dy-search-input"
+        name="q"
+        value="{{ search.terms | escape }}"
+        placeholder="FIN (z.B. WDD205...), Farbcode (197, LC-9X) oder Produkt (Klarlack, Füller) suchen..."
+        autocomplete="off"
+      >
+      <button type="submit" class="search-btn" title="Suchen">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+    </form>
+
+    <div class="search-suggestions">
+      <span style="color: var(--text-muted); font-weight: 700; flex-shrink: 0;">Schnelltest:</span>
+      <button type="button" class="chip-btn" onclick="dyQuickSearch('WDD2050421A123456')">FIN: Mercedes W205</button>
+      <button type="button" class="chip-btn" onclick="dyQuickSearch('LC-9X')">Farbcode: LC-9X</button>
+      <button type="button" class="chip-btn" onclick="dyQuickSearch('EUROLUX')">Aktionen: EUROLUX</button>
+
+      <a
+        href="https://wa.me/436644456359?text={{ 'Hallo DY Autocolor Team, ich bin unsicher wegen meinem Farbcode. Ich schicke hier ein kurzes Foto von meinem Typenschild / Zulassungsschein:' | url_encode }}"
+        target="_blank"
+        rel="noopener"
+        class="chip-btn"
+        style="border-color:#1b8a44; color:#1b8a44; text-decoration:none; margin-left:auto;"
+      >
+        💬 Farbcode unklar? Foto per WhatsApp senden
+      </a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "DY Header & FIN-Suche",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    { "type": "text", "id": "shop_title_main", "label": "Shop Name Teil 1", "default": "DY AUTO" },
+    { "type": "text", "id": "shop_title_accent", "label": "Shop Name Akzent (Orange)", "default": "COLOR" },
+    { "type": "text", "id": "shop_subtitle", "label": "Untertitel", "default": "Seit über 20 Jahren Ihr Spezialist für Farben & Lacke" }
+  ],
+  "presets": [
+    {
+      "name": "DY Header & FIN-Suche"
+    }
+  ]
+}
+{% endschema %}
